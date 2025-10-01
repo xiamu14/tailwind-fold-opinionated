@@ -2,6 +2,7 @@ import * as vscode from "vscode"
 import { Command } from "./commands"
 import { Decorator } from "./decorator"
 import { Settings } from "./configuration"
+import * as Config from "./configuration"
 
 export function activate({ subscriptions }: vscode.ExtensionContext) {
     const decorator = new Decorator()
@@ -32,10 +33,29 @@ export function activate({ subscriptions }: vscode.ExtensionContext) {
         decorator.toggleAutoFold()
     })
 
+    //
+    // Register hover provider
+    //
+    const supportedLanguages = Config.get<string[]>(Settings.SupportedLanguages) ?? []
+    const hoverProvider = vscode.languages.registerHoverProvider(supportedLanguages, {
+        provideHover(document, position) {
+            const hoverText = decorator.getHoverText(position)
+            if (hoverText) {
+                const formattedText = decorator.formatClassNames(hoverText)
+                const markdown = new vscode.MarkdownString()
+                markdown.appendCodeblock(formattedText, 'css')
+                markdown.isTrusted = true
+                return new vscode.Hover(markdown)
+            }
+            return undefined
+        },
+    })
+
     subscriptions.push(changeActiveTextEditor)
     subscriptions.push(changeTextEditorSelection)
     subscriptions.push(changeConfiguration)
     subscriptions.push(toggleCommand)
+    subscriptions.push(hoverProvider)
 }
 
 export function deactivate({ subscriptions }: vscode.ExtensionContext) {

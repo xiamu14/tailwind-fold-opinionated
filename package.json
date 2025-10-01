@@ -1,7 +1,7 @@
 {
-    "name": "tailwind-fold",
-    "displayName": "Tailwind Fold",
-    "description": "Improves code readability by folding class attributes",
+    "name": "tailwind-fold-opinionated",
+    "displayName": "Tailwind Fold Opinionated",
+    "description": "Improves code readability by folding class attributes with opinionated defaults",
     "version": "0.2.0",
     "icon": "images/icon.png",
     "publisher": "stivo",
@@ -52,7 +52,7 @@
                 "tailwind-fold.foldStyle": {
                     "order": 2,
                     "type": "string",
-                    "default": "ALL",
+                    "default": "QUOTES",
                     "description": "Whether to fold entire class attribute or only content in quotes",
                     "enum": [
                         "ALL",
@@ -62,7 +62,7 @@
                 "tailwind-fold.unfoldIfLineSelected": {
                     "order": 3,
                     "type": "boolean",
-                    "default": false,
+                    "default": true,
                     "description": "Automatically unfolds when the line is selected"
                 },
                 "tailwind-fold.showTailwindImage": {
@@ -74,7 +74,7 @@
                 "tailwind-fold.foldedText": {
                     "order": 5,
                     "type": "string",
-                    "default": "...",
+                    "default": "",
                     "description": "Text to show when folded"
                 },
                 "tailwind-fold.foldedTextColor": {
@@ -86,7 +86,7 @@
                 "tailwind-fold.foldedTextBackgroundColor": {
                     "order": 7,
                     "type": "string",
-                    "default": "#52b7ee09",
+                    "default": "#ffffff00",
                     "description": "Background color of folded section"
                 },
                 "tailwind-fold.unfoldedTextOpacity": {
@@ -122,6 +122,20 @@
                     "type": "number",
                     "default": 0,
                     "description": "Specifies the minimum number of characters required for a section to fold"
+                },
+                "tailwind-fold.foldMaxLength": {
+                    "order": 11,
+                    "type": "number",
+                    "default": 0,
+                    "description": "Maximum length of content to fold completely (0 = auto-detect from Editor: Word Wrap Column - 10). Content longer than this will be shown with reduced opacity instead of being folded, to avoid blank lines from soft wrap."
+                },
+                "tailwind-fold.fadedTextOpacity": {
+                    "order": 12,
+                    "type": "number",
+                    "default": 0.2,
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Opacity of text when faded (for long classes that exceed foldMaxLength)"
                 }
             }
         }

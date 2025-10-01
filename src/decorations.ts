@@ -9,7 +9,7 @@ const svgContent = fs.readFileSync(svgPath, "utf8")
 
 function generateScaledSVGPath() {
     const fontSize = workspace.getConfiguration("editor").get("fontSize") as number
-    const scaleFactor = 0.9
+    const scaleFactor = 1
     const width = fontSize * scaleFactor
     const height = fontSize * scaleFactor
 
@@ -36,7 +36,7 @@ export function FoldedDecorationType() {
             contentIconPath:
                 Config.get<boolean>(Settings.ShowTailwindImage) === true ? generateScaledSVGPath() : undefined,
             backgroundColor: Config.get<string>(Settings.FoldedTextBackgroundColor) ?? "transparent",
-            margin: "0 0 0 -5px",
+            margin: "0 2px 0 0",
         },
         after: {
             contentText: Config.get<string>(Settings.FoldedText) ?? "class",
@@ -44,5 +44,18 @@ export function FoldedDecorationType() {
             color: Config.get<string>(Settings.FoldedTextColor) ?? "#7cdbfe7e",
         },
         textDecoration: "none; display: none;",
+    })
+}
+
+export function FadedDecorationType() {
+    return window.createTextEditorDecorationType({
+        before: {
+            contentIconPath:
+                Config.get<boolean>(Settings.ShowTailwindImage) === true ? generateScaledSVGPath() : undefined,
+            backgroundColor: Config.get<string>(Settings.FoldedTextBackgroundColor) ?? "transparent",
+            margin: "0 2px 0 0",
+        },
+        opacity: (Config.get<number>(Settings.FadedTextOpacity) ?? 0.2).toString(),
+        fontStyle: "italic",
     })
 }
