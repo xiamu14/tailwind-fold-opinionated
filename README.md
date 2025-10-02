@@ -1,24 +1,16 @@
 # Tailwind Fold
 
-With Tailwind Fold, you can say goodbye to messy and hard-to-read HTML code. This extension helps improve the readability of your code by automatically "folding" long class attributes.
+With Tailwind Fold Opinionated, you can say goodbye to messy and hard-to-read HTML code. This extension helps improve the readability of your code by automatically "folding" long class attributes.
 
 ## Features
 
-![Folding in action](images/docs/demo.gif)
+### Max_length
 
-By default, automatic folding is enabled, but you can customize this behavior in the settings. Quickly toggle folding using the keyboard shortcut `Ctrl+Alt+A`
+![Format comparison](images/docs/example_max_length.png)
 
-### Comparison
+### Hover pop-up sorted css
 
-![Format comparison](images/docs/tailwind-fold-examples.png)
-
-### Customizable folding styles
-
-![Format comparison](images/docs/example_styles_folded.png)
-
-### Customizable opacity of unfolded class attributes
-
-![Format comparison](images/docs/example_styles_unfolded.png)
+![Format comparison](images/docs/example_hover.png)
 
 ## Extension Settings
 
@@ -34,7 +26,13 @@ This extension contributes the following settings:
 -   `tailwind-fold.unfoldedTextOpacity`: Opacity of unfolded class attributes
 -   `tailwind-fold.supportedLanguages`: Array of languages the extension is enabled for
 -   `tailwind-fold.foldLengthThreshold`: Specifies the minimum number of characters required for a section to fold
+-   `tailwind-fold.foldMaxLength`: Maximum length of content to fold completely (0 = auto-detect from Editor: Word Wrap Column - 10). Content longer than this will be shown with reduced opacity instead of being folded, to avoid blank lines from soft wrap
+-   `tailwind-fold.fadedTextOpacity`: Opacity of text when faded (for long classes that exceed foldMaxLength)
 
 ## Note
 
 This extension folds all class attributes, even if there are no tailwind specific attributes.
+
+## Credits
+
+This project is forked from [tailwind-fold](https://github.com/stivoat/tailwind-fold) by [stivoat](https://github.com/stivoat), with opinionated defaults and additional features.

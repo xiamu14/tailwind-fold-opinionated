@@ -4,10 +4,10 @@
     "description": "Improves code readability by folding class attributes with opinionated defaults",
     "version": "0.2.0",
     "icon": "images/icon.png",
-    "publisher": "stivo",
+    "publisher": "xiamu14",
     "repository": {
         "type": "git",
-        "url": "https://github.com/stivoat/tailwind-fold"
+        "url": "https://github.com/xiamu14/tailwind-fold-opinionated"
     },
     "engines": {
         "vscode": "^1.74.0"
@@ -20,7 +20,8 @@
         "fold",
         "clean code",
         "pretty",
-        "inline css"
+        "inline css",
+        "suspend pop-up sorted css"
     ],
     "activationEvents": [
         "onStartupFinished"
