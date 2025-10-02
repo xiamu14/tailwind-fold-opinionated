@@ -4,7 +4,7 @@
     "description": "Improves code readability by folding class attributes with opinionated defaults",
     "version": "0.2.0",
     "icon": "images/icon.png",
-    "publisher": "xiamu14",
+    "publisher": "ben14",
     "repository": {
         "type": "git",
         "url": "https://github.com/xiamu14/tailwind-fold-opinionated"
